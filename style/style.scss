@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+@import "./includeMedia.scss";
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+html , body {
+    width: 100%;
+    height: fit-content;
+    font-size: 13px;
+}
+body {
+    display: grid;
+    justify-items: center;
+    gap: 25px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    color: white;
+
+    box-shadow: hsl(0deg 0% 80% / 45%) 15px 15px 51px 0;
+
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        img {
+            border-radius: 100%;
+            border: white solid 2px;
+            width: 45px;
+        }
+        .text {
+            display: flex;
+            flex-direction: column;
+            p {
+                font-size: 1.3rem;
+                &.part {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+    .title {
+        font-size: 1.46rem;
+    }
+    .description {
+        opacity: 0.7;
+        line-height: 1.5;
+        font-size: 1rem;
+    }
+}
+.card-1 { background: hsl(263, 55%, 52%); }
+.card-2 { background: hsl(217, 19%, 35%); }
+
+.card-4 {
+    background: hsl(219, 29%, 14%);
+    .header img {
+        border-color: hsl(263, 55%, 52%);
+    }
+}
+    
+.card-3,.card-5 {
+    background: white;
+    color: hsl(217, 19%, 35%);
+
+}
+@include media(">1000px") {
+    .card-1 { grid-area: cd1; }
+    .card-2 { grid-area: cd2; }
+    .card-3 { grid-area: cd3; }
+    .card-4 { grid-area: cd4; }
+    .card-5 { grid-area: cd5; }
+    html {
+        min-width: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        font-size: 15px;
+    }
+    body {
+        grid-template-columns: auto;
+        height: fit-content;
+        grid-template-areas:
+        "cd1 cd1 cd1 cd2 cd5"
+        "cd1 cd1 cd1 cd2 cd5"
+        "cd3 cd4 cd4 cd4 cd5"
+        "cd3 cd4 cd4 cd4 cd5"
+        ;
+        width: 100%;
+        max-width: 1400px;
+        padding: 20px 20px;
+        
+    }
+    .card {
+        padding: 30px 25px !important; 
+    } 
+}
+@include media("<=1000px",">700px") {
+    body {
+        grid-template-columns: 1fr 1fr;
+        padding: 20px 20px;
+    }
+    .card { 
+        order: 1;
+        width: 95%;
+        height: fit-content;
+    }
+    .card-2 , .card-3 { order: 2; }
+}
+@include media("<=700px") {
+    body {
+        padding: 20px 10px;
+    }
+    .card {
+        width: 90%;
+        max-width: 590px;
+        min-width: 280px;
+    }
+} 
+
+@media screen and (max-height: 800px) {
+    html {
+        height: fit-content;
+    }
+}
